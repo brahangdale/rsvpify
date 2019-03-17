@@ -1,0 +1,12 @@
+var state = document.getElementById("address_state");
+
+    while (state.firstChild) state.removeChild(state.firstChild);
+
+    var placeholder = document.createElement("option");
+    placeholder.text = "Choose a state";
+    placeholder.value = "";
+    state.appendChild(placeholder);
+
+   <% @states.each do |s| %>
+     state.options[state.options.length] = new Option('<%= s[1] %>','<%= s[0] %>');
+   <% end %>  

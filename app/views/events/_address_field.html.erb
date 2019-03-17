@@ -1,0 +1,64 @@
+<div class="form_group">
+	<label>Name</label>
+		<%=  address.text_field :name, class: 'form-control', required: true  %>
+	</div>
+
+	<div class="form_group">
+		<label>Address_line1</label>
+			<%=  address.text_field :address_line_1, class: 'form-control', required: true  %>
+	</div>
+
+	<div class="form_group">
+		<label>address_line_2</label>
+			<%=  address.text_field :address_line_2, class: 'form-control' %>
+	</div>
+
+	<div class="row">
+		<div class="col-md-4">
+			<div class="form_group">
+				<label>State</label>
+					<%=  address.select :state, options_for_select(CS.states('IN').invert), {}, class: 'form-control' %>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="form_group">
+					<label>City</label>
+					<%=  address.text_field :city, class: 'form-control', required: true  %>
+				</div>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-md-4">
+				<div class="form_group">
+					<label>Zipcode</label>
+						<%=  address.text_field :zipcode, class: 'form-control', required: true  %>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="form_group">
+					<label>country</label>
+						<%= address.select :country, options_for_select(CS.countries.invert, selected: 'IN'),{}, class: 'form-control' %>
+				</div>
+			</div>
+		</div>
+	
+		<div class="form_group">
+			<label>Mobile_number</label>
+				<%=  address.text_field :mobile_number, class: 'form-control', required: true  %>
+		</div><br>
+		
+  </div>
+ </div>
+ <script type="text/javascript">
+	$("#new_address").validate();
+
+	var country = document.getElementById("address_country");
+
+  country.addEventListener("change", function() {
+    jQuery.ajax({
+     url: "/states?country=" + country.value,
+     type: "GET"
+    })
+  })
+</script>

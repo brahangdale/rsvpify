@@ -1,0 +1,21 @@
+<div class="well show">
+	<div class="form-group">
+		<%= @event.event_name %>
+	</div>
+	<div class="form-group">
+		<%= @event.start_date %>
+	</div>
+	<div class="form-group">
+		<%= @event.end_date %>
+	</div>
+</div>	
+<div class="row">			
+	<div class="well rsvp">
+		RSVP URL : http://localhost:3000/rsvp/<%= @event.code %>
+	</div>
+</div>
+<div class="well location">
+<%= %>
+</div>
+
+		

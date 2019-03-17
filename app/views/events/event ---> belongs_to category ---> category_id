@@ -1,0 +1,55 @@
+event ---> belongs_to category ---> category_id
+code ---> string
+
+
+class Event 
+
+	befor_create  :set_event_code
+
+	def set_event_code
+		if self.code.blank?
+			self.code = SecureRandom.hex(6)
+		end
+	end 
+end
+
+
+
+category ---> has_many --> events
+
+
+event ---> has_many --->feedback
+feedbck--> belongs_to ---> event
+
+Feedback
+	event_id
+	email_id
+	title
+	first_name
+	last_name
+	rsvp_response
+	number_of_people_attending
+	phone_number
+	comment
+
+
+
+
+routes
+
+get '/rsvps/:code' => "event#show"
+
+
+localhost:3000/rsvps/123xasd
+
+
+params[:code]
+
+@event = Event.where(code: params[:code]).last
+
+
+/users/:id
+
+users/1
+users/2
+

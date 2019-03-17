@@ -1,0 +1,62 @@
+<div>
+	<div class="well">
+		<div class="row">
+			<div class="col-md-12">
+				<%= form_for @event do |f| %>
+				<label class="head">Select Category</label>
+					<div class="row">
+						<% Category.all.each_with_index do |category, index| %>
+							<div class="col-md-4">
+								<div class="category-img-container <%= 'active' if index.zero? %>">
+									<%= image_tag(category.image.url) %>
+									<div class="text">
+										<%= category.category_name  %>
+									</div>
+									<%= f.radio_button :category_id, category.id, checked: index.zero?, class: 'hide' %>
+								</div>
+							</div>
+						<% end %>
+					</div>
+					<div class="clearfix"></div>
+				
+					<div class="form-group">
+						<label class="head">Name Your Primary Event</label>
+							<%= f.text_field :event_name , class: 'form-control' %>
+					</div>
+					
+					<div class="form-group">
+						<label class="head">Event Date&Time</label><br>
+						<div class="col-md-4">
+							<label>Start Date</label><br>
+								<%= f.date_field :start_date, autofocus: true %><br>
+						 	<label>End  Date</label><br>
+								<%= f.date_field  :end_date, autofacus: true %>
+						</div><br><br><br>
+					</div>
+						<br><br>
+					<div class="form-group">
+					<label class="head"> Enter Address Details</label>
+						<div class="address-container">
+							<%= f.fields_for :address do |address| %>
+								<%= render partial: 'address_field' , locals: {address: address } %>
+							<% end %>
+								<%= link_to_add_fields "Add Address", f, :address %>
+						</div>
+					</div>
+					<div class="actions">
+							<%= f.submit 'create Event '%>
+					</div>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+	jQuery('.category-img-container').on('click',function() {
+		jQuery('.category-img-container.active').removeClass('active');
+		jQuery(this).find('input').prop('checked', true);
+		jQuery(this).addClass('active');
+	});
+</script>
+
