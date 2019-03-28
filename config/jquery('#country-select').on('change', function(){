@@ -1,0 +1,6 @@
+jquery('#country-select').on('change', function(){
+	country = jQuery(this).val()
+	jQuery.ajax({
+		
+	})
+})

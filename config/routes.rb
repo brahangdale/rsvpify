@@ -5,9 +5,6 @@ Rails.application.routes.draw do
     :omniauth_callbacks => "users/omniauth_callbacks"
 
    }
-      
-    
-
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -63,13 +60,21 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
 
-    root to: 'home#index'
-
+    root to: 'home#home'
+    resources :home
     resources :events
-    get '/rsvps/:code' => "event#new_feedback"
+    post 'create_feedback' => "events#create_feedback"
+    get  'states' => "events#state"
     resources :categories
-    get 'events/address' => 'events#address'
-    get '/states'  => 'events#state'
-    
     resources :users
+    resources :registrations
+
+    resources :rsvps, only: [:show,:create] do
+    
+      member do
+      post :create_feedback
+    end
+    
+    end
+
 end

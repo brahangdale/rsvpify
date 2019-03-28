@@ -1,1 +1,21 @@
-<h1>home</h1>
+<table >                         
+  <tr>                    
+    <th class="th">Event_Name</th>
+
+    <th class="th">Event Date</th>
+    <th class="th">Code</th>
+    <th class="th">Description</th>
+    <th class="th">Actions</th>
+  </tr>
+
+  <% @events.each do |event| %>  
+
+  <tr>
+    <td class="td"><%= event.event_name %></td>  
+    <td class="td"><%= event.event_date %></td> 
+    <td class="td"><%= link_to rsvp_url(event.code),  rsvp_path(event.code) %></td>
+    <td class="td"><%= event.description %></td> 
+    <td class="td">|<%= link_to 'show', event_path(event) %>|&nbsp;&nbsp;|<%= link_to  'delete', event_path(event) , method: :delete %>|</td>
+  </tr>
+<% end %>               
+</table>           

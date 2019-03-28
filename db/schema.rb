@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -11,78 +10,85 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190317093724) do
+ActiveRecord::Schema.define(version: 20190327194553) do
 
-  create_table "addresses", force: :cascade do |t|
-    t.string  "name",           limit: 255
-    t.string  "address_line_1", limit: 255
-    t.string  "address_line_2", limit: 255
-    t.string  "city",           limit: 255
-    t.string  "state",          limit: 255
-    t.string  "zipcode",        limit: 255
-    t.string  "country",        limit: 255
-    t.string  "mobile_number",  limit: 255
-    t.integer "event_id",       limit: 4
+  create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+    t.string "name"
+    t.string "address"
+    t.string "city"
+    t.string "state"
+    t.string "country"
+    t.string "zipcode"
+    t.string "mob_no"
+    t.integer "feedback_id"
+    t.integer "event_id"
   end
 
-  create_table "categories", force: :cascade do |t|
-    t.string   "category_name", limit: 255
+  create_table "categories", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+    t.string "category_name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "image",         limit: 255
+    t.string "image"
   end
 
-  create_table "events", force: :cascade do |t|
-    t.string   "event_name",  limit: 255
-    t.datetime "start_date"
-    t.datetime "end_date"
+  create_table "events", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+    t.string "event_name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "category_id", limit: 4
-    t.string   "code",        limit: 255
-    t.integer  "user_id",     limit: 4
+    t.integer "category_id"
+    t.string "code"
+    t.integer "user_id"
+    t.text "description"
+    t.datetime "event_date"
   end
 
-  create_table "feedbacks", force: :cascade do |t|
-    t.integer "event_id",                   limit: 4
-    t.string  "email_id",                   limit: 255
-    t.string  "title",                      limit: 255
-    t.string  "first_name",                 limit: 255
-    t.string  "last_name",                  limit: 255
-    t.string  "rsvp_response",              limit: 255
-    t.string  "number_of_people_attending", limit: 255
-    t.string  "phone_number",               limit: 255
-    t.text    "comment",                    limit: 65535
-  end
-
-  create_table "user_providers", force: :cascade do |t|
-    t.integer  "user_id",    limit: 4
-    t.string   "provider",   limit: 255
-    t.string   "uid",        limit: 255
+  create_table "feedbacks", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+    t.integer "event_id"
+    t.string "email_id"
+    t.string "first_name"
+    t.string "last_name"
+    t.integer "response"
+    t.integer "no_of_peoples"
+    t.string "mobile"
+    t.string "message"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "user_providers", ["user_id"], name: "index_user_providers_on_user_id", using: :btree
+  create_table "user_infos", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.integer "feedback_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
-  create_table "users", force: :cascade do |t|
-    t.string   "email",                  limit: 255, default: "", null: false
-    t.string   "encrypted_password",     limit: 255, default: "", null: false
-    t.string   "reset_password_token",   limit: 255
+  create_table "user_providers", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+    t.integer "user_id"
+    t.string "provider"
+    t.string "uid"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["user_id"], name: "index_user_providers_on_user_id"
+  end
+
+  create_table "users", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          limit: 4,   default: 0,  null: false
+    t.integer "sign_in_count", default: 0, null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip",     limit: 255
-    t.string   "last_sign_in_ip",        limit: 255
-    t.datetime "created_at",                                      null: false
-    t.datetime "updated_at",                                      null: false
-    t.string   "first_name",             limit: 255
-    t.string   "lst_name",               limit: 255
+    t.string "current_sign_in_ip"
+    t.string "last_sign_in_ip"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "first_name"
+    t.string "lst_name"
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
-
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end

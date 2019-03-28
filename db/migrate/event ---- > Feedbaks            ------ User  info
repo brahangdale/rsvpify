@@ -1,0 +1,21 @@
+event ---- > Feedbaks            ------ User  infos
+
+						ravib@mandasd						Ravi Baghele
+																		Bharti Ra
+						4
+						
+
+
+						feedback.user_infos.each do |user_info|
+							user_info.first_name + "" + user_info.last_name
+						end
+
+
+
+
+
+						event.feedbacks.accepted_rsvps_count
+
+						event.feedbacks.maybe_rsvps_count
+
+						event.feedbacks.rejected_rsvps_count

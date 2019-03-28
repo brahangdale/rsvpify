@@ -1,12 +1,12 @@
-var state = document.getElementById("address_state");
+var state = document.getElementById("state-picker");
 
-    while (state.firstChild) state.removeChild(state.firstChild);
+while (state.firstChild) state.removeChild(state.firstChild);
 
-    var placeholder = document.createElement("option");
-    placeholder.text = "Choose a state";
-    placeholder.value = "";
-    state.appendChild(placeholder);
+var placeholder = document.createElement("option");
+placeholder.text = "Choose a country";
+placeholder.value = "";
+state.appendChild(placeholder);
 
-   <% @states.each do |s| %>
-     state.options[state.options.length] = new Option('<%= s[1] %>','<%= s[0] %>');
-   <% end %>  
+<% @states.each do |c| %>
+ 	state.options[state.options.length] = new Option('<%= c[1] %>','<%= c[0] %>');
+<% end %>  

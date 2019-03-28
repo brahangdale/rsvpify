@@ -1,12 +1,15 @@
 <body class="body">
 <div align=center>
-<%= image_tag "RSVPify-logo.png"  %></div>
+<%= image_tag "RSVPify-logo.png", :style => "    vertical-align: middle;
+    width: 200px;
+    height: 150px;" %></div>
 <div class= "well-login">
 <div class="col-md-12">
+<div class="form-group">
 <%= link_to 'Login with google' , user_google_oauth2_omniauth_authorize_path, :class => "btn btn-primary" %><br>
 <%= link_to 'Login with facebook' , user_facebook_omniauth_authorize_path , :class => "btn btn-danger" %>
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="form-group">
+  
     <%= f.label :email %><br />
     <%= f.email_field :email, class: 'form-control', autofocus: true %>
   </div>

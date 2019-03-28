@@ -1,0 +1,69 @@
+<h1 class="h1">Edit Event</h1>
+<div class="well">
+	<div class="row">
+		<div class="col-md-12">
+			<%= form_for @event do |f| %>
+				<label class="head">Select Category</label>
+				<div class="row">
+					<% Category.all.each_with_index do |category, index| %>
+						<div class="col-md-4">
+							<div class="category-img-container <%= 'active' if index.zero? %>">
+									<%= image_tag(category.image.url) %>
+								<div class="text">
+									<%= category.category_name  %>
+								</div>
+									<%= f.radio_button :category_id, category.id, checked: index.zero?, class: 'hide' %>
+							</div>
+						</div>
+					<% end %>
+				</div><hr>
+				<div class="clearfix"></div>
+					<div class="row">
+						<div class="col-md-12">
+							<div  class="col-md-8">
+								<div class="form-group">
+									<label class="head">Name Your Primary Event</label>
+										<%= f.text_field :event_name, class: 'form-control' %>
+								</div>
+								<div class="form-group">
+									<label class="head"> Event Date:</label>
+										<div class="input-group">
+											<%= f.text_field :event_date, class: 'form-control date-picker' %>
+												<span class="input-group-addon">
+        									<span class="glyphicon glyphicon-calendar"></span>
+      									</span>
+										</div>
+								</div>
+								<div class="form-group">
+									<label class="head">Meassage</label>
+										<%= f.text_area :description , class: 'form-control' %>
+								</div>
+									<br><br>
+								<div class="actions">
+									<%= f.submit 'create Event '%>
+								</div>
+							</div>
+							<div class="col-md-4"></div>
+						</div>
+					</div>
+				</div>
+			<% end %>	
+		</div>
+	</div>
+		
+
+<script type="text/javascript">
+	jQuery('.category-img-container').on('click',function() {
+		jQuery('.category-img-container.active').removeClass('active');
+		jQuery(this).find('input').prop('checked', true);
+		jQuery(this).addClass('active');
+	});
+	
+ $(function () {
+    $('.date-picker').datetimepicker({
+    	format: "dddd, MMMM Do YYYY, h:mm:ss a"
+    });
+  });
+
+</script>
+
