@@ -4,7 +4,9 @@
 			<div class="col-md-4">
 				<h1 class="name"><%=  @event.event_name %></h1>
 				<br>
-				<%= @event.event_date %><br>
+        <div class="form-group group">
+				<%= @event.event_date %>
+        </div><br>
 				<%= image_tag(@event.category.image.url) %>
 			</div>
 			<div class="col-md-8">

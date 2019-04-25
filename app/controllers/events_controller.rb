@@ -7,7 +7,7 @@ class EventsController < ApplicationController
 	end
 
 	def new
-		@event = Event.new
+		@event = current_user.events.build
 		@event.build_address
 	end
 

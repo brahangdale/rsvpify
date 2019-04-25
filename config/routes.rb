@@ -76,5 +76,9 @@ Rails.application.routes.draw do
     end
     
     end
+    namespace :api do
+      resources :sessions, only: [:create, :destroy]
+      resources :events, only: [:index]
+    end
 
 end

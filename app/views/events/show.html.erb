@@ -6,92 +6,137 @@
 			</div>
 
 			<div class="col-md-8">
-				<div class="form-group">
+				<div class="form-group group">
 					<label class="m-20px">Event Name:- </label>
-						<%= @event.event_name %>
+					<%= @event.event_name %>
 				</div>
 
-				<div class="form-group">
+				<div class="form-group group">
 					<label class="m-20px">Event Date:- </label>
-						<%= @event.event_date %>
+					<%= @event.event_date %>
 				</div>
 
 				<div align="center">
 					<div class="col-md-2">
 						<%= image_tag "happy.png", :style => "width: 70px; height: 70px; margin-right: 40px;" %>
 						<%= @event.feedbacks.accepted_rsvps_count %><br><strong>(Yes)</strong>
-    			</div>
-   			<div class="col-md-2">
+					</div>
+					<div class="col-md-2">
 						<%= image_tag "sad.png", :style => "width: 70px; height: 70px; margin-right: 40px;" %>
 						<%= @event.feedbacks.Maybe_rsvps_count %><br><strong>(May Be)</strong>
-				</div>
-				<div class="col-md-2">
+					</div>
+					<div class="col-md-2">
 						<%= image_tag "no.png", :style => "width: 70px; height: 70px; margin-right: 40px;" %>
 						<%= @event.feedbacks.no_rsvps_count %><br><strong>(No)</strong>
-				</div>
-			</div>	
-				
-			
-			<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Share Your Event</button>
+					</div>
+				</div>	
 
-			<div id="myModal" class="modal fade" role="dialog">
-  			<div class="modal-dialog">
-					<div class="modal-content">
-      			<div class="modal-header">
-        			<button type="button" class="close" data-dismiss="modal">&times;</button>
-        				<h2 class="modal-title">Share Your Event</h2>
-      			</div>
 
-      			<div class="modal-body">
-        			<p class="para">Share this URL with guest to collect RSVPs for your event:</p>
-        			<h5 class="h5">http://localhost:3000/rsvps/<%= @event.code %></h5>
-							<p class="para"> You can add this URL to your printed invitations, or share via email or social media:</p>
-						
+				<button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">Share Your Event
+				</button>
 
-				      <%= link_to "https://mail.google.com/mail/?view=cm&fs=1&tf=1&su=this is test email&body=sdasdasdsddsd", target: '_blank' do %>
-    					<%= image_tag 'Gmail.png',:style => "vertical-align: middle;width: 50px; height: 50px; margin-right
-    					: 20px;" %>
-							<% end %>
+				<div id="myModal" class="modal fade" role="dialog">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal">&times;</button>
+								<h2 class="modal-title">Share Your Event</h2>
+							</div>
 
-							<%=  link_to "http://compose.mail.yahoo.com/?to=TO&amp;subject=RSVP for Test Event&body=I would like to invite you to Test Event.", target: '_blank' do %>
-    					<%= image_tag "yahoo.png", :style => "vertical-align: middle;width: 50px; height: 50px;margin-right
-    					: 10px;" %>
-							<% end %>
+							<div class="modal-body">
+								<p class="para">Share this URL with guest to collect RSVPs for your event:</p>
+								<h5 class="h5">http://localhost:3000/rsvps/<%= @event.code %></h5>
+								<p class="para"> You can add this URL to your printed invitations, or share via email or social media:
+								</p>
 
-							<%= link_to "https://outlook.live.com/default.aspx?rru=compose&subject=RSVP for Test Event&body=I would like to invite you to Test Event.", target: '_blank' do %>
-							<%= image_tag "otlook.jpg", :style => "vertical-align: middle;width: 60px;height: 60px;margin-right
-    					: 10px;" %>
-							<% end %>
+								<%= link_to "https://mail.google.com/mail/?view=cm&fs=1&tf=1&su=this is test email&body=sdasdasdsddsd", target: '_blank' do %>
+								<%= image_tag 'Gmail.png',:style => "vertical-align: middle;width: 50px; height: 50px; margin-right
+								: 20px;" %>
+								<% end %>
 
-							<%= link_to "https://www.facebook.com/sharer/sharer.php?u=https://www.purpletrail.com/rsvp/f91c45fd", target: '_blank' do %>
-							<%= image_tag "facebook.jpeg", :style => "vertical-align: middle;width: 60px;height: 60px;margin-right
-    					: 10px;" %>
-							<% end %>
+								<%=  link_to "http://compose.mail.yahoo.com/?to=TO&amp;subject=RSVP for Test Event&body=I would like to invite you to Test Event.", target: '_blank' do %>
+								<%= image_tag "yahoo.png", :style => "vertical-align: middle;width: 50px; height: 50px;margin-right
+								: 10px;" %>
+								<% end %>
 
-							<%= link_to "https://twitter.com/intent/tweet?url=http://localhost:3000/rsvps/#{@event.code}", target: 'blank'  do %>
-							<%= image_tag "twitter.png", :style => "vertical-align: middle;width: 60px;height: 60px;" %>
-							<% end %>
+								<%= link_to "https://outlook.live.com/default.aspx?rru=compose&subject=RSVP for Test Event&body=I would like to invite you to Test Event.", target: '_blank' do %>
+								<%= image_tag "otlook.jpg", :style => "vertical-align: middle;width: 60px;height: 60px;margin-right
+								: 10px;" %>
+								<% end %>
 
-      			</div>
+								<%= link_to "https://www.facebook.com/sharer/sharer.php?u=https://www.purpletrail.com/rsvp/f91c45fd", target: '_blank' do %>
+								<%= image_tag "facebook.jpeg", :style => "vertical-align: middle;width: 60px;height: 60px;margin-right
+								: 10px;" %>
+								<% end %>
 
-      			<div class="modal-footer">
-        			<button type="button"  data-dismiss="modal">Close</button>
-      			</div>
-      		</div>
+								<%= link_to "https://twitter.com/intent/tweet?url=http://localhost:3000/rsvps/#{@event.code}", target: 'blank'  do %>
+								<%= image_tag "twitter.png", :style => "vertical-align: middle;width: 60px;height: 60px;" %>
+								<% end %>
+							</div>
+
+							<div class="modal-footer">
+								<button type="button"  data-dismiss="modal">Close</button>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
+
+<div class="well show2">
+	<div class="row">
+		<div class="col-md-12">
+		<div class="col-md-8">
+			<h1 class="m-20px">Response</h1>
+			<% if @event.address.blank? %>
+				<h1> No address found. </h1>
+			<% else %>
+				
+					<div class="form-group group">
+						<label class="address1">Name:-</label>
+							<%= @event.address.name %>
+					</div>
+					<div class="form-group group">
+						<label class="address1">Address Name:-</label>
+							<%= @event.address.address %>
+					</div>
+					<div class="form-group group">
+						<label class="address1">City:-</label>
+							<%= @event.address.city %>
+					</div>
+					<div class="form-group group">
+						<label class="address1">State:-</label>
+							<%= @event.address.state %>
+					</div>
+					<div class="form-group group">
+						<label class="address1">Country:-</label>
+							<%= @event.address.country %>
+					</div>
+					<div class="form-group group">
+						<label class="address1">Mobile Number:-</label>
+							<%= @event.address.mob_no %>
+					</div>
+					<div class="form-group group">
+						<label class="address1">zipcode:-</label>
+							<%= @event.address.zipcode %>
+					</div>
+				</div>
+			<% end %>
+		</div>
+	</div>
 </div>
+
+
 <div class="well show1">
 <h1 class="m-20px">Response</h1>
-	<table border="1">
+	<table>
 		<tr>
-			<th class="td">Name</th>
-			<th class="td" >Response</th>
-			<th class="td">No Of People</th>
-			<th class="td">Meassage</th>
+			<th class="address1">Name</th>
+			<th class="address1" >Response</th>
+			<th class="address1">No Of People</th>
+			<th class="address1">Meassage</th>
 		</tr>
 		<% if @feedbacks.blank? %>
 			<tr>
@@ -102,11 +147,12 @@
 				<tr>
 					<td>
 						<% feed.user_infos.each do  |user_info| %>
-							<%= user_info.first_name + "  " + user_info.last_name %><br>
+							<%= user_info.first_name + "    " + user_info.last_name %><br>
 						<% end %>
 					</td>
 					<td class="td"><%= feed.response %></td>
 					<td class="td"><%= feed.no_of_peoples %></td>
+					<td class="td"><%= feed.message %></td>
 				</tr>
 			<% end %>
 		<% end %>

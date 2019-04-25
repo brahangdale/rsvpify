@@ -1,21 +1,28 @@
-<table >                         
-  <tr>                    
+<table>                        
+  <thead>                  
     <th class="th">Event_Name</th>
-
-    <th class="th">Event Date</th>
+    <th class="th">Event_Date</th>
     <th class="th">Code</th>
     <th class="th">Description</th>
     <th class="th">Actions</th>
-  </tr>
-
-  <% @events.each do |event| %>  
-
-  <tr>
-    <td class="td"><%= event.event_name %></td>  
-    <td class="td"><%= event.event_date %></td> 
-    <td class="td"><%= link_to rsvp_url(event.code),  rsvp_path(event.code) %></td>
-    <td class="td"><%= event.description %></td> 
-    <td class="td">|<%= link_to 'show', event_path(event) %>|&nbsp;&nbsp;|<%= link_to  'delete', event_path(event) , method: :delete %>|</td>
-  </tr>
-<% end %>               
+  </thead>
+  <tbody>
+    <% if @events.blank? %>
+      <tr>
+        <td colspan="5" class="text-center">
+          No Event found, Please<%= link_to "click Here", new_event_path %>  to create new event.
+        </td>
+      </tr>
+    <% else %>
+      <% @events.each do |event| %>  
+        <tr>
+          <td class="td"><%= event.event_name %></td>  
+          <td class="td"><%= event.event_date %></td> 
+          <td class="td"><%= link_to rsvp_url(event.code),  rsvp_path(event.code) %></td>
+          <td class="td"><%= event.description %></td> 
+          <td class="td">|<%= link_to 'show', event_path(event) %>|&nbsp;&nbsp;|<%= link_to  'delete', event_path(event) , method: :delete %>|</td>
+        </tr>
+      <% end %> 
+    <% end %> 
+  </tbody>             
 </table>           

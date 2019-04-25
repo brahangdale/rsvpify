@@ -1,10 +1,9 @@
 <body class="body">
   <div align=center>
-    <%= image_tag "RSVPify-logo.png", :style => "vertical-align: middle;
-    width: 200px;
-    height: 150px;"  %>
+    <%= image_tag "RSVPify-logo.png", :style => "vertical-align: middle;width: 200px;height: 150px;"  %>
   </div>
-  <div class= "well-login">
+
+  <div class= "well login">
     <div class="col-md-12">
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= devise_error_messages! %>
@@ -25,12 +24,9 @@
           <label class="Sign">password_confirmation</label><br>
           <%= f.password_field :password_confirmation, class: 'form-control', autocomplete: "off" %>
         </div>
-
-        
           <%= f.submit "Sign up", :class => "btn btn-default" %>
-        
       <% end %>
-      <%= render "devise/shared/links" %>
+          <%= link_to 'Login', new_user_session_path %>
     </div>
   </div>
 </body>

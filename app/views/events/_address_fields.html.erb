@@ -1,8 +1,8 @@
 <div class="row">
 	<div class="col-md-12">
-		<h1>Address</h1>
+		<h1 class="head">Address</h1>
 		<div class="form-group">
-			<label>Name</label>
+			<label class="address">Name</label>
 				<%= f.text_field :name, class: 'form-control' %>
 		</div>
 		<div class="form-group">
@@ -10,29 +10,29 @@
 				<%= f.text_field :address, class: 'form-control' %>
 		</div>
 		<div class="form-group">
-			<label>City</label>
+			<label class="address">City</label>
 				<%= f.text_field :city,class: 'form-control' %>
 		</div>
 		<div class="row">
 			<div class="col-md-6">
 				<div class="form-group">
-					<label>State</label>
+					<label class="address">State</label>
 	  				<%= f.select :state, options_for_select(CS.states(:in).invert), {:prompt => "Select State"},  class: 'form-control', :id => "state-picker"%>
 				</div>
 			</div>
 			<div class="col-md-6">
 				<div class="form-group">
-					<label>Country</label>
+					<label class="address">Country</label>
 						<%= f.select :country, options_for_select(CS.countries.invert), {:prompt  => "Select Countries"}, class: 'form-control', :id => "country-picker" %>
 				</div>
 			</div>
 		</div>
 			<div class="form-group">
-				<label>Zipcode</label>
+				<label class="address">Zipcode</label>
 					<%= f.text_field :zipcode, class: 'form-control'  %>
 			</div>
 				<div class="form-group">
-					<label>Mobile Number</label>
+					<label class="address">Mobile Number</label>
 						<%= f.text_field :mob_no, class: 'form-control' %>
 				</div>
 	</div>
